@@ -37,6 +37,14 @@ class Person
 	def goodbye(funeral)
 		p self.name << " " << funeral
 	end
+ 
+	def getEtsy
+		doc = Nokogiri::HTML(open("http://www.crunchbase.com/company/etsy"))
+		shopHereText = doc.css("#container").css("#col2_internal").css(".h1_first").inner_text
+		if shopHereText.include? "Etsy"
+			@friends.push(shopHereText.to_str)
+		end
+	end
 
 
 	#Array
