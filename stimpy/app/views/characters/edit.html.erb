@@ -1,0 +1,9 @@
+<%= form_for @character do |f| %>
+	<%= f.label :name, 'Name' %>:
+	<%= f.text_field :name %>
+	<%= f.label :age, 'Age' %>:
+	<%= f.text_field :age %>
+	<%= f.label :fav_color, 'Favorite Color' %>:
+	<%= f.text_field :fav_color %>
+	<%= f.submit %>
+<% end %>

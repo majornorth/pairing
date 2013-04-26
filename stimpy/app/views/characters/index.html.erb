@@ -1,0 +1,16 @@
+<!-- MAKE A FUCKING MODEL VIEW AND CONTROLLER AND CRUD THE SHIT OUT OF IT -->
+
+<h1>Log!</h1>
+
+<%= link_to "new",new_character_path %>
+<br />
+
+<ul>
+	<% @characters.each do |c| %>
+		<li><%= c.name %> <%= link_to "edit",edit_character_path(c.id) %> <%= link_to "x", character_path(c.id),
+		:method => "DELETE" %></li>
+		<li><%= c.age %></li>
+	<% end %>
+</ul>
+<br />
+<%= @Ren.inspect %>
