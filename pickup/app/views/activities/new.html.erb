@@ -1,0 +1,15 @@
+<h1>Create Activity</h1>
+
+<%= form_for @activity do |f| %>
+	<%= f.label :sport, 'Pickup type' %>:
+	<%= f.text_field :sport %>
+
+	<%= f.label :note, 'Note' %>:
+	<%= f.text_field :note %>
+
+	<%= f.label :location, 'Location' %>:
+	<%= f.text_field :location %>
+
+	<%= f.submit %>
+
+<% end %>

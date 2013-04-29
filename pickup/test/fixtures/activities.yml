@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  sport: MyString
+  when: 2013-04-29 14:13:55
+  joined: 1
+  location: MyString
+  note: MyString
+  posted_on: 2013-04-29 14:13:55
+
+two:
+  sport: MyString
+  when: 2013-04-29 14:13:55
+  joined: 1
+  location: MyString
+  note: MyString
+  posted_on: 2013-04-29 14:13:55
