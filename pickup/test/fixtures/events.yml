@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  sport: MyString
+  start: 2013-04-30 18:51:24
+  location: MyText
+
+two:
+  sport: MyString
+  start: 2013-04-30 18:51:24
+  location: MyText

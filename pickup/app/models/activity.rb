@@ -1,3 +1,3 @@
 class Activity < ActiveRecord::Base
-  attr_accessible :joined, :location, :note, :posted_on, :sport, :when
+  attr_accessible :type
 end

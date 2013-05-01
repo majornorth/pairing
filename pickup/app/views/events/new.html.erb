@@ -1,0 +1,15 @@
+<h1>Events#new</h1>
+
+<%= form_for @event do |f| %>
+
+	<%= select("activity", "id", Activity.all.collect { |e| [ e.name, e.id ] }, {:include_blank => 'Select Sport'}) %>
+
+	<%= f.label :start, 'Starts' %>:
+	<%= f.text_field :start %>
+
+	<%= f.label :location, 'Location' %>:
+	<%= f.text_field :location %>
+
+	<%= f.submit %>
+
+<% end %>

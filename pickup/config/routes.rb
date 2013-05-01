@@ -1,4 +1,4 @@
 Pickup::Application.routes.draw do
+  resources :events
   root :to => "activities#index"
-  resources :activities
 end
