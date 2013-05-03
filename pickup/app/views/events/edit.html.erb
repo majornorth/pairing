@@ -1,2 +1,15 @@
-<h1>Events#edit</h1>
-<p>Find me in app/views/events/edit.html.erb</p>
+<h1>Edit pickup</h1>
+
+<%= form_for @event do |f| %>
+
+	<%= select(:activity, :name, Activity.all.collect { |a| [ a.name, a.name ] }, {:include_blank => 'Select Sport', :selected => @event.sport}) %>
+
+	<%= f.label :start, 'Starts' %>:
+	<%= f.text_field :start %>
+
+	<%= f.label :location, 'Location' %>:
+	<%= f.text_field :location %>
+
+	<%= f.submit %>
+
+<% end %>

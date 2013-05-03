@@ -1,2 +1,13 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+<h1>Pickups</h1>
+
+<%= link_to "create pickup", new_event_path %>
+<br />
+
+<ul>
+	<% @events.each do |e| %>
+		<li><%= e.sport %> <%= link_to "edit",edit_event_path(e.id) %> <%= link_to "delete", event_path(e.id), :method => "DELETE" %></li>
+		<li><%= e.start %></li>
+		<li><%= e.location %></li>
+		<br />
+	<% end %>
+</ul>

@@ -1,3 +1,3 @@
 class Activity < ActiveRecord::Base
-  attr_accessible :type
+  attr_accessible :name
 end
