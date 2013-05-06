@@ -1,0 +1,23 @@
+<h1>Edit Quote</h1>
+
+<%= form_for @quote do |f| %>
+
+	<%= f.label :quotation, 'Quotation' %>:
+	<br />
+	<%= f.text_area :quotation %>
+	
+	<p>
+	<%= f.label :attribution, 'Attribution' %>:
+	<br />
+	<%= f.text_field :attribution %>
+	</p>
+
+	<p>
+	<%= f.label :genesis, 'Quoted on:' %>:
+	<br />
+	<%= f.text_field :genesis %>
+	</p>
+
+	<%= f.submit %> <%= link_to "Cancel", quotes_path %>
+
+<% end %>

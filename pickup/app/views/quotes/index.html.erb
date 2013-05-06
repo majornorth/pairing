@@ -1,0 +1,10 @@
+<h1>Quotes</h1>
+
+<ul>
+	<% @quotes.each do |q| %>
+		<li><%= q.quotation %> <%= link_to "edit",edit_quote_path(q.id) %> <%= link_to "delete", quote_path(q.id), :method => "DELETE" %></li>
+		<li><%= q.attribution %></li>
+		<li><%= q.genesis %></li>
+		<br />
+	<% end %>
+</ul>

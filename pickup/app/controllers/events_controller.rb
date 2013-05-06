@@ -11,7 +11,6 @@ class EventsController < ApplicationController
   end
 
   def create
-    p params
     @event = Event.new(params[:event]) 
     @event.sport = params[:activity][:name]
     @event.save
