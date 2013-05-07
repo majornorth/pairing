@@ -4,7 +4,7 @@
 	<% @quotes.each do |q| %>
 		<li><%= q.quotation %> <%= link_to "edit",edit_quote_path(q.id) %> <%= link_to "delete", quote_path(q.id), :method => "DELETE" %></li>
 		<li><%= q.attribution %></li>
-		<li><%= q.genesis %></li>
+		<li><%= q.genesis.to_date().to_formatted_s(:long_ordinal) %></li>
 		<br />
 	<% end %>
 </ul>
