@@ -1,0 +1,13 @@
+<h1>Users</h1>
+
+<%= link_to "sign up", new_user_path %>
+<br />
+
+<ul>
+	<% @users.each do |u| %>
+		<li><%= u.firstName %> <%= u.lastName %> <%= link_to "edit",edit_user_path(u.id) %> <%= link_to "delete", user_path(u.id), :method => "DELETE" %></li>
+		<li><%= u.email %></li>
+		<li><%= u.mobile %></li>
+		<br />
+	<% end %>
+</ul>

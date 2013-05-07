@@ -1,0 +1,27 @@
+<h1>Sign up</h1>
+
+<%= form_for @user do |f| %>
+
+	<%= f.label :firstName, 'First Name' %>:
+	<%= f.text_field :firstName %>
+	<br />
+
+	<%= f.label :lastName, 'Last Name' %>:
+	<%= f.text_field :lastName %>
+	<br />
+
+	<%= f.label :email, 'Email' %>:
+	<%= f.text_field :email %>
+	<br />
+
+	<%= f.label :mobile, 'Mobile' %>:
+	<%= f.text_field :mobile %> (Numbers only)
+	<br />
+
+	<%= f.label :password, 'Password' %>:
+	<%= f.text_field :password %>
+	<br />
+
+	<%= f.submit %> <%= link_to "Cancel", users_path %>
+
+<% end %>
