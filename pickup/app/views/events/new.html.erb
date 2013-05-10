@@ -10,6 +10,8 @@
 	<%= f.label :location, 'Location' %>:
 	<%= f.text_field :location %>
 
+	<%= select(:user, :id, User.all.collect { |u| [ u.firstName, u.id ] }, {:prompt => 'Add Attendees:'}, { :multiple => true, :size => User.all.count }) %>
+
 	<%= f.submit %>
 
 <% end %>

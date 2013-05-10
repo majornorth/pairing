@@ -8,6 +8,9 @@
 		<li><%= e.sport %> <%= link_to "edit",edit_event_path(e.id) %> <%= link_to "delete", event_path(e.id), :method => "DELETE" %></li>
 		<li><%= e.start %></li>
 		<li><%= e.location %></li>
+		<% e.users.each do |u| %>
+			<li><%= u.firstName %></li>
+		<% end %>
 		<br />
 	<% end %>
 </ul>
