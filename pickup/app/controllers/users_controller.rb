@@ -9,8 +9,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user]) 
-    @user.save
-    redirect_to users_path
+    if @user.save
+      sign_in @user
+      flash[:success] = "Welcome to PlayMakers!"
+      redirect_to users_path
+    else
+      render 'new'
+    end
   end
 
   def edit
@@ -26,5 +31,9 @@ class UsersController < ApplicationController
   def destroy
     User.find(params[:id]).destroy
     redirect_to users_path
+  end
+
+  def show
+    @user = User.find(params[:id])
   end
 end

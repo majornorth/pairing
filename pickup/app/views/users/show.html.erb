@@ -1,0 +1,7 @@
+<%= link_to "Back to Events", root_path %>
+<h1><%= @user.firstName %> <%= @user.lastName %></h1> 
+<% if signed_in? %>
+	<%= link_to "Sign out", signout_path, method: "delete" %>
+<% else %>
+	<%= link_to "Sign in", signin_path %>
+<% end %>

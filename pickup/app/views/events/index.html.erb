@@ -2,11 +2,17 @@
 
 <%= link_to "create pickup", new_event_path %>
 <br />
+<% if signed_in? %>
+	<%= link_to "Profile", current_user %> <%= link_to "Sign out", signout_path, method: "delete" %>
+<% else %>
+	<%= link_to "Sign in", signin_path %>
+<% end %> 
+<br />
 
 <ul>
 	<% @events.each do |e| %>
 		<li><%= e.sport %> <%= link_to "edit",edit_event_path(e.id) %> <%= link_to "delete", event_path(e.id), :method => "DELETE" %></li>
-		<li><%= e.start %></li>
+		<li><%= e.start.to_date().to_formatted_s(:long_ordinal) %></li>
 		<li><%= e.location %></li>
 		<% e.users.each do |u| %>
 			<li><%= u.firstName %></li>
