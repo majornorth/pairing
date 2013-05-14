@@ -11,11 +11,11 @@
 
 <ul>
 	<% @events.each do |e| %>
-		<li><%= e.sport %> <%= link_to "edit",edit_event_path(e.id) %> <%= link_to "delete", event_path(e.id), :method => "DELETE" %></li>
+		<li><%= link_to(event_path(e.id)) do %><%= e.sport %><% end %> <%= link_to "edit",edit_event_path(e.id) %> <%= link_to "delete", event_path(e.id), :method => "DELETE" %></li>
 		<li><%= e.start.to_date().to_formatted_s(:long_ordinal) %></li>
 		<li><%= e.location %></li>
 		<% e.users.each do |u| %>
-			<li><%= u.firstName %></li>
+			<li><%= u.firstName %> <%= u.lastName %></li>
 		<% end %>
 		<br />
 	<% end %>

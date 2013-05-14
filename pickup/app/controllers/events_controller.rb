@@ -32,4 +32,8 @@ class EventsController < ApplicationController
     Event.find(params[:id]).destroy
     redirect_to events_path
   end
+
+  def show
+    @event = Event.find(params[:id])
+  end
 end
