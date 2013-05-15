@@ -14,11 +14,17 @@ class EventsController < ApplicationController
     @event = Event.new(params[:event]) 
     @event.sport = params[:activity][:name]
     @event.save
+    @attendee = params[:user][:id]
+    @attendee.select! { |a| ! a.empty? }
+    @attendee.each do |a|
+      @event.users << User.find(a)
+    end
     redirect_to events_path
   end
 
   def edit
     @event = Event.find(params[:id])
+    @attendees = @event.users
   end
 
   def update
@@ -35,5 +41,10 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+  end
+
+  def join
+    Event.find(params[:event][:event_id]).users << current_user
+    redirect_to :back
   end
 end

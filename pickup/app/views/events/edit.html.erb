@@ -5,11 +5,13 @@
 	<%= select(:activity, :name, Activity.all.collect { |a| [ a.name, a.name ] }, {:include_blank => 'Select Sport', :selected => @event.sport}) %>
 
 	<%= f.label :start, 'Starts' %>:
-	<%= f.text_field :start %>
+	<%= date_select("event", "start", :order => [:day, :month, :year], :discard_year => true) %>
 
 	<%= f.label :location, 'Location' %>:
 	<%= f.text_field :location %>
 
-	<%= f.submit %>
+	<%= select(:user, :id, User.all.collect { |u| [ u.firstName, u.id ] }, {:prompt => 'Add Attendees:'}, { :multiple => true, :size => User.all.count, :selected => "Jim" }) %>
+
+	<%= f.submit %> <%= link_to "Cancel", event_path %>
 
 <% end %>

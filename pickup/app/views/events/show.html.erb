@@ -1,8 +1,21 @@
 <%= link_to "Back to Events", root_path %>
 
-<h1><%= @event.sport %></h1>
+<h1><%= @event.sport %> (<%= @event.users.count %> joined)</h1>
+
+<%= link_to "edit", edit_event_path %> <%= link_to "delete", event_path, :method => "DELETE" %>
 
 <ul>
 	<li><%= @event.location %></li>
 	<li><%= @event.start.to_date().to_formatted_s(:long_ordinal) %></li>
 </ul>
+
+
+	<%= form_for @event, :url => join_path do |f| %>
+		<%= f.hidden_field :event_id, :value => @event.id %>
+		<%= f.submit('Join') %>
+	<% end %> 
+
+	<% if ! signed_in? %>
+		<%= link_to "Sign in", signin_path %> or <%= link_to "Sign up", new_user_path %> to join pickup
+	<% end %>
+

@@ -5,7 +5,7 @@
 	<%= select(:activity, :name, Activity.all.collect { |a| [ a.name, a.name ] }, {:include_blank => 'Select Sport'}) %>
 
 	<%= f.label :start, 'Starts' %>:
-	<%= f.text_field :start %>
+	<%= date_select("event", "start", :order => [:day, :month, :year], :discard_year => true) %>
 
 	<%= f.label :location, 'Location' %>:
 	<%= f.text_field :location %>
