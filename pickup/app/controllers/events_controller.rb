@@ -44,7 +44,12 @@ class EventsController < ApplicationController
   end
 
   def join
-    Event.find(params[:event][:event_id]).users << current_user
+    @event = Event.find(params[:event][:event_id]).users << current_user
+    redirect_to :back
+  end
+
+  def leave
+    @event = Event.find(params[:event][:event_id]).users.delete(current_user)
     redirect_to :back
   end
 end
