@@ -2,7 +2,9 @@
 
 <h1><%= @event.sport %> (<%= @event.users.count %> joined)</h1>
 
-<%= link_to "edit", edit_event_path %> <%= link_to "delete", event_path, :method => "DELETE" %>
+<% if current_user.id == @event.organizer %>
+	<%= link_to "edit", edit_event_path %> <%= link_to "delete", event_path, :method => "DELETE" %>
+<% end %>
 
 <ul>
 	<li><%= @event.location %></li>

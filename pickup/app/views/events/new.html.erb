@@ -1,6 +1,8 @@
 <h1>New Pickup</h1>
 
 <%= form_for @event do |f| %>
+	
+	<%= f.hidden_field :organizer, :value => current_user.id %>
 
 	<%= select(:activity, :name, Activity.all.collect { |a| [ a.name, a.name ] }, {:include_blank => 'Select Sport'}) %>
 

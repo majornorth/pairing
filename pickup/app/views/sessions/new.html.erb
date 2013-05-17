@@ -10,9 +10,7 @@
     <%= f.password_field :password %>
     <br />
 
-    <%= f.submit "Sign in" %>
+    <%= f.submit "Sign in" %> <%= link_to "Cancel", events_path %></p>
 <% end %>
 
 <p>New user? <%= link_to "Sign up", new_user_path %>
-<br />
-<%= link_to "Cancel", users_path %></p>
