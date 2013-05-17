@@ -9,6 +9,14 @@
 	<li><%= @event.start.to_date().to_formatted_s(:long_ordinal) %></li>
 </ul>
 
+<h2>Joined:</h2>
+
+<ul>
+	<% @event.users.each do |u| %>
+		<li><%= u.firstName %> <%= u.lastName %></li>
+	<% end %>
+</ul>
+
 	<% if signed_in? %>
 
 		<% if @event.users.select { |u| u.id == current_user.id }.empty? == true %>
