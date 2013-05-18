@@ -12,6 +12,7 @@
 <ul>
 	<% @events.each do |e| %>
 		<li><%= link_to(event_path(e.id)) do %><%= e.sport %><% end %></li>
+		<li><%= e.users.count %> joined</li>
 		<li><%= e.start.to_formatted_s(:long_ordinal) %></li>
 		<li><%= e.location %></li>
 		<br />
