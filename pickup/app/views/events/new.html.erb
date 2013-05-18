@@ -5,15 +5,16 @@
 	<%= f.hidden_field :organizer, :value => current_user.id %>
 
 	<%= select(:activity, :name, Activity.all.collect { |a| [ a.name, a.name ] }, {:include_blank => 'Select Sport'}) %>
+	<br />
 
 	<%= f.label :start, 'Starts' %>:
-	<%= date_select("event", "start", :order => [:day, :month, :year], :discard_year => true) %>
+	<%= datetime_select("event", "start", :order => [:month, :day, :year], :discard_year => true, :ampm => true) %>
+	<br />
 
 	<%= f.label :location, 'Location' %>:
 	<%= f.text_field :location %>
+	<br />
 
-	<%= select(:user, :id, User.all.collect { |u| [ u.firstName, u.id ] }, {:prompt => 'Add Attendees:'}, { :multiple => true, :size => User.all.count }) %>
-
-	<%= f.submit %>
+	<%= f.submit %> <%= link_to "Cancel", events_path %>
 
 <% end %>
