@@ -1,6 +1,3 @@
-# make another model for "quotes" and build the views and controller required to do CRUD on quotes
-# replicate eventscontroller, just on another model
-
 class EventsController < ApplicationController
   def index
     @events = Event.order("created_at DESC")
@@ -13,12 +10,16 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(params[:event]) 
     @event.sport = params[:activity][:name]
+    @event.users << current_user
     @event.save
-    @attendee = params[:user][:id]
-    @attendee.select! { |a| ! a.empty? }
-    @attendee.each do |a|
-      @event.users << User.find(a)
-    end
+    twilio_sid = "ACac6ded17686d7923cda16a0add533dfa"
+    twilio_token = "ac355e41ef99e73569c8539c8afefe4d"
+    @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
+    @twilio_client.account.sms.messages.create(
+      :from => '+14695027613',
+      :to => '+15157080626',
+      :body => 'Hey there! Thanks once more for using PlayMakers!'
+    )
     redirect_to events_path
   end
 

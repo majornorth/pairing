@@ -31,6 +31,12 @@
 		<%= f.submit %> <%= link_to "Cancel", events_path %>
 	<% end %>
 	<br />
+
+	<h2>Favorite Activities</h2>
+	<% User.find(current_user.id).activities.each do |a| %>
+		<li><%= a.name %></li>
+	<% end %>
+
 <% else %>
 	<%= link_to "Sign in", signin_path %>
 <% end %>
