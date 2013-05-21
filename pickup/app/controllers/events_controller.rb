@@ -12,14 +12,17 @@ class EventsController < ApplicationController
     @event.sport = params[:activity][:name]
     @event.users << current_user
     @event.save
+    sport = @event.sport
+    starts = @event.start
     twilio_sid = "ACac6ded17686d7923cda16a0add533dfa"
     twilio_token = "ac355e41ef99e73569c8539c8afefe4d"
     @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
     @twilio_client.account.sms.messages.create(
       :from => '+14695027613',
       :to => '+15157080626',
-      :body => 'Hey there! Thanks once more for using PlayMakers!'
+      :body => "#{sport} is happening #{starts.to_formatted_s(:long_ordinal)}. Do you want to join? http://plymkrs.co/hv17a1/"
     )
+    
     redirect_to events_path
   end
 

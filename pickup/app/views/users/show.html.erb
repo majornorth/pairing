@@ -33,9 +33,11 @@
 	<br />
 
 	<h2>Favorite Activities</h2>
-	<% User.find(current_user.id).activities.each do |a| %>
-		<li><%= a.name %></li>
-	<% end %>
+	<ul>
+		<% User.find(current_user.id).activities.each do |a| %>
+			<li><%= a.name %></li>
+		<% end %>
+	</ul>
 
 <% else %>
 	<%= link_to "Sign in", signin_path %>
