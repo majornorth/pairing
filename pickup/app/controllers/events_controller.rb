@@ -20,7 +20,7 @@ class EventsController < ApplicationController
     @twilio_client.account.sms.messages.create(
       :from => '+14695027613',
       :to => '+15157080626',
-      :body => "#{sport} is happening #{starts.to_formatted_s(:long_ordinal)}. Do you want to join? http://plymkrs.co/hv17a1/"
+      :body => "#{sport.downcase} is happening #{starts.to_formatted_s(:long_ordinal)}. Do you want to join? http://plymkrs.co/hv17a1/"
     )
     
     redirect_to events_path
