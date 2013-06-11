@@ -16,19 +16,25 @@ class EventsController < ApplicationController
     sport = @event.sport
     sport_id = @event.sport_id
     starts = @event.start
-    subscribers = Activity.find(sport_id).users
-    send_to_subscribers = Array.new
-    subscribers.each do |s|
-      send_to_subscribers.push(s.mobile)
-    end
+    
     twilio_sid = "ACac6ded17686d7923cda16a0add533dfa"
     twilio_token = "ac355e41ef99e73569c8539c8afefe4d"
     @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
-    @twilio_client.account.sms.messages.create(
-      :from => '+14695027613',
-      :to => send_to_subscribers,
-      :body => "#{sport} is happening #{starts.to_formatted_s(:long_ordinal)}. Do you want to join? http://plymkrs.co/hv17a1/"
-    )
+
+    subscribers = Activity.find(sport_id).users
+    subscriber_numbers = Array.new
+    subscribers.each do |s|
+      subscriber_numbers.push(s.mobile)
+    end
+    
+    subscriber_numbers.each do |number|
+      @twilio_client.account.sms.messages.create(
+        :from => '+14695027613',
+        :to => number,
+        :body => "#{sport} is happening #{starts.to_formatted_s(:long_ordinal)}. Do you want to join? http://plymkrs.co/hv17a1/"
+      )
+    end
+
     redirect_to events_path
   end
 
