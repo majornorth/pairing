@@ -1,2 +1,23 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<h2>Edit Profile</h2>
+
+<%= form_for @user do |f| %>
+
+	<%= f.label :firstName, 'First Name' %>:
+	<%= f.text_field :firstName %>
+	<br />
+
+	<%= f.label :lastName, 'Last Name' %>:
+	<%= f.text_field :lastName %>
+	<br />
+
+	<%= f.label :email, 'Email' %>:
+	<%= f.text_field :email %>
+	<br />
+
+	<%= f.label :mobile, 'Mobile' %>:
+	<%= f.text_field :mobile %> (Numbers only)
+	<br />
+
+	<%= f.submit %> <%= link_to "Cancel", current_user %>
+
+<% end %>

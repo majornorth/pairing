@@ -2,43 +2,28 @@
 <h1><%= @user.firstName %> <%= @user.lastName %></h1> 
 <% if signed_in? %>
 	<p>
-		<%= link_to "Sign out", signout_path, method: "delete" %>
+		<%= link_to "Edit profile", edit_user_path %>
 	</p>
-	
-	<h2>Edit Profile</h2>
+<% else %>
+	<p>
+		<%= link_to "Sign in", signin_path %>
+	</p>
+<% end %>
 
-	<%= form_for @user do |f| %>
-		<%= f.label :firstName, 'First Name' %>:
-		<%= f.text_field :firstName %>
-		<br />
-
-		<%= f.label :lastName, 'Last Name' %>:
-		<%= f.text_field :lastName %>
-		<br />
-
-		<%= f.label :email, 'Email' %>:
-		<%= f.text_field :email %>
-		<br />
-
-		<%= f.label :mobile, 'Mobile' %>:
-		<%= f.text_field :mobile %> (Numbers only)
-		<br />
-
-		<%= f.label :password, 'New Password' %>:
-		<%= f.password_field :password %>
-		<br />
-
-		<%= f.submit %> <%= link_to "Cancel", events_path %>
-	<% end %>
-	<br />
-
-	<h2>Favorite Activities</h2>
+<h2>Favorite Activities</h2>
 	<ul>
 		<% User.find(current_user.id).activities.each do |a| %>
 			<li><%= a.name %></li>
 		<% end %>
 	</ul>
 
-<% else %>
-	<%= link_to "Sign in", signin_path %>
-<% end %>
+<h2>Attending Pickups</h2>
+	<ul>
+		<% User.find(current_user.id).events.each do |e| %>
+			<li><%= link_to(event_path(e.id)) do %><%= e.sport %><% end %></li>
+			<li><%= e.users.count %> joined</li>
+			<li><%= e.start.to_formatted_s(:long_ordinal) %></li>
+			<li><%= e.location %></li>
+			<br />
+		<% end %>
+	</ul>

@@ -11,7 +11,6 @@ class UsersController < ApplicationController
     @user = User.new(params[:user]) 
     if @user.save
       sign_in @user
-      flash[:success] = "Welcome to PlayMakers!"
       redirect_to users_path
     else
       render 'new'

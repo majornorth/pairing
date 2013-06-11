@@ -27,9 +27,8 @@ class EventsController < ApplicationController
     @twilio_client.account.sms.messages.create(
       :from => '+14695027613',
       :to => send_to_subscribers,
-      :body => "#{sport.downcase} is happening #{starts.to_formatted_s(:long_ordinal)}. Do you want to join? http://plymkrs.co/hv17a1/"
+      :body => "#{sport} is happening #{starts.to_formatted_s(:long_ordinal)}. Do you want to join? http://plymkrs.co/hv17a1/"
     )
-    
     redirect_to events_path
   end
 
@@ -42,7 +41,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @event.sport = params[:activity][:name]
     @event.update_attributes(params[:event])
-    redirect_to events_path
+    redirect_to event_path
   end
 
   def destroy
