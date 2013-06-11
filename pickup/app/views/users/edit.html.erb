@@ -18,6 +18,10 @@
 	<%= f.text_field :mobile %> (Numbers only)
 	<br />
 
-	<%= f.submit %> <%= link_to "Cancel", current_user %>
+	<%= f.label :password, 'Update Password' %>:
+	<%= f.password_field :password %>
+	<br />
 
+	<%= f.submit %> <%= link_to "Cancel", current_user %>
+	
 <% end %>

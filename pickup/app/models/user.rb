@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_secure_password
 
   before_save { |user| user.email = email.downcase }
-  before_save :create_remember_token
+  before_create :create_remember_token
 
   validates :firstName, presence: true, length: { maximum: 30 }
   validates :lastName, presence: true, length: { maximum: 30 }
@@ -14,7 +14,8 @@ class User < ActiveRecord::Base
   validates :email, presence: true, 
   	format: { with: VALID_EMAIL_REGEX }, 
   	uniqueness: { case_sensitive: false }
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, length: { :within => 6..40 }, :on => :create
+  validates :password, length: { :within => 6..40 }, :allow_blank => true, :on => :update
 
   private
 
