@@ -25,3 +25,27 @@
 	<%= f.submit %> <%= link_to "Cancel", current_user %>
 	
 <% end %>
+
+<h2>Favorite Activities</h2>
+	<ul>
+		<% User.find(current_user.id).activities.each do |a| %>
+			<li><%= a.name %> 
+				<%= form_for @user, :url => removefavorite_path do |f| %>
+					<%= f.hidden_field :activity_id, :value => a.id %>
+					<%= f.submit('Remove') %>
+				<% end %>
+			</li> 
+		<% end %>
+	</ul>
+
+<h2>Subscribe to Activities</h2>
+	<ul>
+		<% Activity.all.each do |a| %>
+			<li><%= a.name %> 
+				<%= form_for @user, :url => addfavorite_path do |f| %>
+					<%= f.hidden_field :activity_id, :value => a.id %>
+					<%= f.submit('Add') %>
+				<% end %>
+			</li> 
+		<% end %>
+	</ul>

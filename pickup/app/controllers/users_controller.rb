@@ -35,4 +35,14 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end
+
+  def addFavorite
+    Activity.find(params[:activity][:activity_id]).users << current_user
+    redirect_to :back
+  end
+
+  def removeFavorite
+    Activity.find(params[:id]).users.delete(current_user)
+    redirect_to :back
+  end
 end

@@ -1,19 +1,21 @@
 <h1>Pickups</h1>
 
 <% if signed_in? %>
-<%= link_to "create pickup", new_event_path %>
-<br />
-	<%= link_to "Profile", current_user %> <%= link_to "Sign out", signout_path, method: "delete" %>
+<p>	
+	<%= link_to "Profile", current_user %> | <%= link_to "Sign out", signout_path, method: "delete" %>
+</p>
+<p>
+	<%= link_to "create pickup", new_event_path %>
+</p>
 <% else %>
 	<%= link_to "Sign in", signin_path %> or <%= link_to "Sign up", new_user_path %> to join or create pickups
 <% end %> 
-<br />
 
 <ul>
 	<% @events.each do |e| %>
 		<li><%= link_to(event_path(e.id)) do %><%= e.sport %><% end %></li>
 		<li><%= e.users.count %> joined</li>
-		<li><%= e.start.to_formatted_s(:long_ordinal) %></li>
+		<li><%= e.start.strftime("%A, %b %e at %l:%M%P") %></li>
 		<li><%= e.location %></li>
 		<br />
 	<% end %>

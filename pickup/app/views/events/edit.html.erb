@@ -5,7 +5,7 @@
 	<%= select(:activity, :name, Activity.all.collect { |a| [ a.name, a.name ] }, {:include_blank => 'Select Sport', :selected => @event.sport}) %>
 
 	<%= f.label :start, 'Starts' %>:
-	<%= datetime_select("event", "start", :order => [:month, :day, :year], :discard_year => true, :ampm => true) %>
+	<%= datetime_select("event", "start", :order => [:month, :day], :use_short_month => true, :ampm => true, :minute_step => 15, :datetime_separator => 'at ') %>
 	<br />
 
 	<%= f.label :location, 'Location' %>:

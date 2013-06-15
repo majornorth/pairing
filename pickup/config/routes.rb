@@ -8,4 +8,6 @@ Pickup::Application.routes.draw do
   match '/signout', to: 'sessions#destroy', via: :delete
   match '/join', to: 'events#join'
   match '/leave', to: 'events#leave'
+  match 'addfavorite', to: 'users#addFavorite'
+  match 'removefavorite', to: 'users#removeFavorite'
 end

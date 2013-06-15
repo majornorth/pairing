@@ -31,7 +31,7 @@ class EventsController < ApplicationController
       @twilio_client.account.sms.messages.create(
         :from => '+14695027613',
         :to => number,
-        :body => "#{sport} is happening #{starts.to_formatted_s(:long_ordinal)}. Do you want to join? http://plymkrs.co/hv17a1/"
+        :body => "#{sport} is happening #{starts.strftime("%A, %b %e at %l:%M%P")}. Do you want to join? http://plymkrs.co/hv17a1/"
       )
     end
 
