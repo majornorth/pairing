@@ -17,8 +17,8 @@ class EventsController < ApplicationController
     sport_id = @event.sport_id
     starts = @event.start
     
-    twilio_sid = "ACac6ded17686d7923cda16a0add533dfa"
-    twilio_token = "ac355e41ef99e73569c8539c8afefe4d"
+    twilio_sid = ENV["TWILIO_SID"]
+    twilio_token = ENV["TWILIO_TOKEN"]
     @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
 
     subscribers = Activity.find(sport_id).users

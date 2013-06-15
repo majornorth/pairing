@@ -37,12 +37,12 @@ class UsersController < ApplicationController
   end
 
   def addFavorite
-    Activity.find(params[:activity][:activity_id]).users << current_user
+    Activity.find(params[:user][:activity_id]).users << current_user
     redirect_to :back
   end
 
   def removeFavorite
-    Activity.find(params[:id]).users.delete(current_user)
+    Activity.find(params[:user][:activity_id]).users.delete(current_user)
     redirect_to :back
   end
 end
