@@ -28,7 +28,7 @@
 
 <h2>Favorite Activities</h2>
 	<ul>
-		<% if User.find(current_user).activities != nil %>
+		<% if current_user.activities != nil %>
 			<% User.find(current_user).activities.each do |a| %>
 				<li><%= a.name %> 
 					<%= form_for @user, :url => removefavorite_path do |f| %>
